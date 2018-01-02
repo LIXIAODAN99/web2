@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>大作业</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#to_top{
+			width:30px;
+		 	height:40px; 
+		 	padding:20px; 
+		 	font:14px/20px arial; 
+		 	text-align:center;  
+		 	background-color: green; 
+		 	position:absolute; 
+		 	cursor:pointer; 
+		 	color:FF66CC;}
+		*{
+			margin: 0px;
+			padding:0px;
+		}
+		body{
+			text-align: center;
+			font-size: 12px;
+			color: #522a06;
+			font-family: '宋体';
+			background-color: #FFFFC4;
+		}
+		#header{
+			height: 165px;
+			background-color: #997038;
+            background-position: top center;
+		}
+		#shang{
+			display: block;
+			height: 165px;
+		}
+		img.logo{
+			position: absolute;
+			top: 25px;
+			left: 70px;
+			display: inline-block;
+		}
+		div.nav_search{
+			display: inline-block;
+			padding-top: 100px;
+			float: right;
+			padding-right: 70px;
+			background-color: #997038;
+		}
+		.shurukuang{
+			height: 19px;
+			width: 140px;
+			background-color: #663800;
+		}
+		.sousuo{
+			width: 44px;
+			height: 21px;
+			background-color: #997038;
+			color: #fff;
+			border: 1px; solid; #f8f5ee;
+		}
+		#content1{
+			height: 50px;
+			background-color: #CCC;
+			opacity: 0.5;
+		}
+		#nav{
+			margin-left: 50px;
+			list-style:none;
+			line-height:50px;
+		}
+		#nav a:link,#nav a:visited{
+			display:block;
+			width:80px;
+			color: black;
+			text-align:center;
+			text-decoration:none;
+			background:#CCC;
+			font-size: 20px;
+		}
+		#nav a:hover{
+		color: #FFF;
+		text-decoration: underline;
+		font-weight: bold;
+		background:#999;
+		}
+		#nav ul{list-style: none;}
+		#nav li{
+		float:left;
+		width: 80px;
+		}
+		#nav li ul li a:hover{
+		background:#C00;
+		}
+		#nav li ul{
+			display: none;
+		}
+		#nav li.subMenuShow ul{
+			display: block;
+		}
+
+
+
+
+		#content2{
+
+			width: 1000px;
+			height: 1100px;
+			margin: 0 auto;
+			clear: both;
+		}
+		.content2_left{
+			margin-top: 50px;
+			width: 700px;
+            float: left;
+            text-align: left;
+		}
+		.content2_right{
+        	width: 280px;
+        	height: 1050px;
+        	float: left;
+        	margin-left: 16px;
+        }
+        .mianbaoxue{
+        	height: 40px;
+        	line-height: 40px;
+        	padding-left: 43px;
+        	text-align: left;
+        }
+        .content_left_11{
+            font-size: 16px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            border-bottom: 1px solid #c9baa5;
+        }
+        .content_left_12{
+        	font-size: 12px;
+        	text-align: center;
+        	color: #757575;
+        	margin: 10px;
+
+        }
+        div.content_left_2{
+        	line-height: 28px;
+        	padding: 10px;
+        	font-size: 14px;
+            border-bottom: 1px solid #c9baa5;
+            text-indent: 2em;
+        }
+        p.content_left_2{
+        	margin-top: 5px;
+        }
+        .content_left_2_tupian{
+        	margin-top: 10px;
+        	margin-bottom: 10px;
+        	margin-left: -10px;
+        	text-align: center;
+        }
+        .content_left_3{
+        	height: 40px;
+        	line-height: 40px;
+        	margin-top: 10px;
+        	font-size: 13px;
+        }
+        a.content_left_3{
+        	margin-right: 40px;
+        	color: #844004;
+        	font-size: 13px;
+        }
+		.content_right_1{
+            height: 307px;
+            margin-top: 50px;
+            margin-left: 10px;
+            border: 1px solid #9ff;
+            background-image: url(image/rightbeijpg.jpg);
+            background-repeat: no-repeat;
+            font-size: 10px;
+        }
+        .re{
+        	display: inline-block;
+        	margin: 10px;
+        }
+        ul.content_right_1_list{
+        	line-height: 30px;
+        	margin-top: 20px;
+        	font-family: '宋体';
+        	font-size: 10px;
+        	text-align: left;
+        }
+        a.b{
+        	color: black;
+        }
+
+
+        #smallpic{
+        height:120px; 
+        }
+        img{
+        /*float:left; */
+        margin-right:10px; 
+        margin-bottom:10px;
+        }
+        #smallpic img:hover{
+            cursor:pointer; /*设定鼠标的形状为小手*/
+        }
+        .pb{
+         border:3px solid #14c3fd;
+        } 
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var liNodes=document.getElementsByTagName("li");
+			for(var i=0;i<liNodes.length;i++)
+			{
+				liNodes[i].onmouseover = function(){
+					this.className="subMenuShow";
+				}
+				liNodes[i].onmouseout=function(){
+					this.className="";
+				}
+			}
+			var username = document.getElementById("username");	
+			username.onblur = checkUsername;
+			var oTop = document.getElementById("to_top");
+  			document.onmousemove = function(evt){
+    			var oEvent = evt || window.event;
+    			var scrollleft = document.documentElement.scrollLeft || document.body.scrollLeft;
+    			var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+   				oTop.style.left = oEvent.clientX + scrollleft +10 +"px";
+    			oTop.style.top = oEvent.clientY + scrolltop + 10 + "px";
+  			}
+			}
+		function checkUsername() { 
+			var username = document.getElementById("username");
+			if (username.value.length == 0)//username.value==''
+			{		
+				username.parentNode.innerHTML = username.parentNode.innerHTML+"<br/>"+"<span style='color:red'>目的地必须输入</span>";
+			}
+		}
+		var img1=document.getElementById("smallpic").childNodes[0];
+    	function showpic(i,j,n) {
+       		var bigpic1=document.getElementById('bigpic');
+        	bigpic1.src=i;
+       		// var img=document.getElementById(j);
+        	for(var n=2;n<7;n++)
+        	{
+            	sn=String(n);
+            	var img=document.getElementById(sn);
+            	if(sn!=j)
+            	{
+                	img.style.border="";
+            	}
+            	else
+            	{
+               		img.style.border="3px solid #ff8800";
+            	}
+        	}
+    	}
+		
+	</script>
+</head>
+<body>
+	<div id="header">
+		<div id="shang">
+			<div><img src="image/logo10.png" class="logo"></div>
+			<div class="nav_search">
+				<input type="text"/ name="shuru" class="shurukuang">
+				<input type="button" name="sousuo" value="搜索" class="sousuo">
+			</div>
+		</div>
+	</div>
+	<div id="content1">
+		<ul id="nav">
+			<li><a href="#">首页</a>
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">首页</a></li>
+				</ul>
+			</li>
+			<li><a href="#">跟团游</a>
+				<ul>
+					<li><a href="#">跟团游</a></li>
+					<li><a href="#">跟团游</a></li>
+				</ul>
+			</li>
+			<li><a href="#">自助游</a>
+				<ul>
+					<li><a href="#">自助游</a></li>
+					<li><a href="#">自助游</a></li>
+				</ul>
+			</li>
+			<li><a href="#">车票</a>
+				<ul>
+					<li><a href="#">车票</a></li>
+					<li><a href="#">车票</a></li>
+				</ul>
+			</li>
+			<li><a href="#">游轮</a>
+				<ul>
+					<li><a href="#">游轮</a></li>
+					<li><a href="#">游轮</a></li>
+				</ul>
+			</li>
+			<li><a href="#">住宿</a>
+				<ul>
+					<li><a href="#">住宿</a></li>
+					<li><a href="#">住宿</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id="content2">
+		<div class="content2_left">
+			<div class="mianbaoxue">
+				当前位置： 首页 > 跟团游
+			</div>
+			<div class="content_left_11">
+				缤纷夏日，畅游香港迪士尼
+			</div>
+			<div class="content_left_12">
+				畅行旅游网  2016-3-15
+			</div>
+		    <div class="content_left_2">
+			    <div>
+				    <p class="content_left_2">迪士尼童话，伴随几代人成长，唐老鸭、米老鼠、高飞、灰姑娘、白雪公主、芭比公主，美女与野兽、冰雪公主，数不清的迪士尼童话主角，伴我们度过美好的童年，即使已经成年的我们，依然能在相关影视作品中寻获单纯的快乐。香港迪士尼乐园是按迪士尼童话世界和漫威系列打造的主题乐园。初夏，带着初心，我和朋友来到了香港离岛大屿山，进入这个梦幻世界……</p>
+			    </div>
+			    <div class="content_left_2_tupian">
+				    <!-- <img src="image/dishini.jpg"> -->
+				    <div id="smallpic">
+            			<img src="image/dishini2.jpg" width="100" height="115" id="2" onclick="showpic('image/dishini2.jpg','2');" />
+            			<img src="image/dishini3.jpg" width="100" height="115" id="3" onclick="showpic('image/dishini3.jpg','3');" />
+           				<img src="image/dishini4.jpg" width="100" height="115" id="4" onclick="showpic('image/dishini4.jpg','4');" />
+            			<img src="image/dishini5.jpg" width="100" height="115" id="5" onclick="showpic('image/dishini5.jpg','5');" />
+            			<img src="image/dishini6.jpg" width="100" height="115" id="6" onclick="showpic('image/dishini6.jpg','6');" />
+        			</div>
+        			<div >
+            			<img id="bigpic" src="image/dishini.jpg" width="600px" />
+       				 </div>
+			    </div>
+			    <div>
+				     <p  class="content_left_2">迪士尼园区有很多主题表演，《魔法书》和《狮子王》是其中最有名气的两个，相对来说个人更喜欢《魔法书》。翻开魔法书，冰雪公主、美人鱼缓缓出场，她们边跳边唱，带领所有观众回到经典童话的世界，每一个场景都让人如痴如醉，无论大人、小孩都沉醉其中！在迪士尼的世界，没有黑暗，因为光明总在前方。特别喜欢这种励志情怀，因为生活需要阳光！</p>
+			    </div>
+		    </div>
+		    <div class="content_left_3">
+			    上一篇：<a href="#" class="b">[三江汇流]怒江峡谷大景观</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下一篇: <a href="#" class="b">洗眼洗肺洗心灵，走进梦中的日月潭</a>
+		     </div> 
+        </div>
+		<div class="content2_right">
+        	<div class="content_right_1">
+        		<form>
+        			<table>
+        				<caption style="font-weight: bold;font-size: 20px; color: red;">酒店住宿</caption>
+        				<tr>
+        					<td>目的地：</td>
+        					<td><input type="text" id="username" name="username" /><span id="errorTip"></span></td>
+        				</tr>
+        				<tr>
+        					<td>入住日期：</td>
+        					<td><input type="text" name="ruzhu"></td>
+        				</tr>
+        				<tr>
+        					<td>退房日期：</td>
+        					<td><input type="text" name="tuifang"/></td>
+        				</tr>
+        				<tr>
+        					<td>每间住客数</td>
+        					<td><input type="text" name="renshu"></td>
+        				</tr>
+        				<tr>
+        					<td>关键字：</td>
+        					<td><input type="text" name="guanjianzi"></td>
+        				</tr>
+        				<tr>
+        					<td>&nbsp;</td>
+        					<td>
+        						<input type="reset" id="reset" value="重设" />
+								<input id="submit" type="submit" value="提交" />
+        					</td>
+        				</tr>
+        			</table>
+        		</form>
+        	</div>
+        	<div class="content_right_2">
+        		<img src="image/pai.png" class="re">
+        		<img src="image/pai1.jpg" class="re">
+        		<img src="image/pai2.jpg" class="re">
+        		<img src="image/pai3.jpg" class="re">
+        	</div>
+        </div>
+	</div>
+	<div id="to_top">畅行旅游</div>
+</body>
+</html>
